@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../provider/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(UserContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(result => {
+
+      })
+      .catch(error => {
+        console.log(error.message);
+      })
+  }
   return (
     <div>
 
@@ -11,6 +23,9 @@ const Header = () => {
         <Link className="mx-5" to="/">Home</Link>
         <Link className="mx-5" to="/login">Login</Link>
         <Link className="mx-5" to="/register">Register</Link>
+        {
+          user ? <> <small>{user.email}</small>  <button onClick={handleLogOut} className="btn btn-success mx-5">Sing Out</button>  </> : <Link to='/login' className="btn btn-success mx-5">Login</Link>
+        }
       </div>
     </div>
   );

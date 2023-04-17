@@ -1,36 +1,36 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import {UserContext} from '../provider/AuthProvider'
+import { UserContext } from '../provider/AuthProvider'
 
 const Register = () => {
 
-const {user, createUser } = useContext(UserContext)
+  const { user, createUser } = useContext(UserContext)
 
-const handleRegister = (event) =>{
-  event.preventDefault();
-  const form = event.target;
-  const email = form.email.value;
-  const name = form.name.value;
-  const password = form.password.value;
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const name = form.name.value;
+    const password = form.password.value;
 
-  createUser(email, password)
-  .then(result =>{
-    const loggedUser = result.user;
-    console.log(loggedUser);
-    form.reset();
-  })
-  .catch(error =>{
-    console.log(error.message);
-  })
+    createUser(email, password)
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        form.reset();
+      })
+      .catch(error => {
+        console.log(error.message);
+      })
 
-}
-
-
+  }
 
 
-    return (
-        <div>
-            <div className="hero min-h-screen bg-base-200">
+
+
+  return (
+    <div>
+      <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col ">
           <div className="text-center ">
             <h1 className="text-5xl font-bold">Register Now</h1>
@@ -55,21 +55,21 @@ const handleRegister = (event) =>{
                   <span className="label-text">Password</span>
                 </label>
                 <input type="password" required name='password' placeholder="password" className="input input-bordered" />
-                
+
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
               </div>
             </form>
             <p className='mb-4 ml-4 '>
-            <Link to='/login' className="link link-primary">Already have an Account  
-            </Link>
+              <Link to='/login' className="link link-primary">Already have an Account
+              </Link>
             </p>
           </div>
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Register;

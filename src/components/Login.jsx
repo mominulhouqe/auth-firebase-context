@@ -4,33 +4,33 @@ import { UserContext } from '../provider/AuthProvider';
 
 const Login = () => {
 
-  const {singIn} = useContext(UserContext);
+  const { singIn } = useContext(UserContext);
 
 
-    const handleLogin = (event) =>{
-      event.preventDefault();
-      const form = event.target;
-      const email = form.email.value;
-      const passoword = form.password.value;
-      console.log(email,passoword);
-      
-      singIn(email, passoword)
-      .then(result =>{
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const passoword = form.password.value;
+    console.log(email, passoword);
+
+    singIn(email, passoword)
+      .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser);
         form.reset();
       })
-      .catch(error =>{
+      .catch(error => {
         console.log(error.message);
       })
 
-    }
+  }
 
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
+        <div className="hero-content flex-col ">
+          <div className="text-center ">
             <h1 className="text-5xl font-bold">Login now!</h1>
 
           </div>
@@ -55,7 +55,7 @@ const Login = () => {
                 <button className="btn btn-primary">Login</button>
               </div>
             </form>
-            <Link to='/register' className="link link-primary mb-4 ml-4 ">Are you new here?  
+            <Link to='/register' className="link link-primary mb-4 ml-4 ">Are you new here?
             </Link>
           </div>
         </div>
