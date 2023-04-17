@@ -12,7 +12,7 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const passoword = form.password.value;
-    console.log(email, passoword);
+   
 
     singIn(email, passoword)
       .then(result => {

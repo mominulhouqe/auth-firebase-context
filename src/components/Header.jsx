@@ -21,6 +21,7 @@ const Header = () => {
       <div className="navbar bg-primary text-primary-content">
         <a className="btn btn-ghost normal-case text-xl">Auth</a>
         <Link className="mx-5" to="/">Home</Link>
+        <Link className="mx-5" to="/order">Order</Link>
         <Link className="mx-5" to="/login">Login</Link>
         <Link className="mx-5" to="/register">Register</Link>
         {
