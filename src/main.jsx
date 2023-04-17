@@ -13,51 +13,47 @@ import Register from './components/Register';
 import AuthProvider from './provider/AuthProvider';
 import Order from './components/Order';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import UserProfile from './components/UserProfile';
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element:<Main></Main>,
-    children:[
+    path: '/',
+    element: <Main></Main>,
+    children: [
       {
-        path:'/',
+        path: '/',
         element: <Home></Home>,
       },
       {
-        path:'/login',
+        path: '/login',
         element: <Login></Login>,
       },
       {
-        path:'/register',
+        path: '/register',
         element: <Register></Register>,
       },
-      
       {
-        path:'/order',
+        path: '/profile',
+        element: <PrivateRoute>
+          <UserProfile></UserProfile>
+        </PrivateRoute>
+      },
+
+      {
+        path: '/order',
         element: <PrivateRoute>
           <Order></Order>
         </PrivateRoute>,
       },
-      
+
     ]
   }
 ])
 
-
-
-
-
-
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
- 
-
     <AuthProvider>
-    <RouterProvider router = {router} />
+      <RouterProvider router={router} />
     </AuthProvider>
-
-  
   </React.StrictMode>,
 )

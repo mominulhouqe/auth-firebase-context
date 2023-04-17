@@ -16,12 +16,13 @@ const Header = () => {
   }
   return (
     <div>
-
-
       <div className="navbar bg-primary text-primary-content">
         <a className="btn btn-ghost normal-case text-xl">Auth</a>
         <Link className="mx-5" to="/">Home</Link>
         <Link className="mx-5" to="/order">Order</Link>
+        {
+          user && <Link className="mx-5" to="/profile">Profile</Link>
+        }
         <Link className="mx-5" to="/login">Login</Link>
         <Link className="mx-5" to="/register">Register</Link>
         {
