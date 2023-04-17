@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import {UserContext} from '../provider/AuthProvider'
 
 const Register = () => {
+
+const {user, createUser } = useContext(UserContext)
 
 const handleRegister = (event) =>{
   event.preventDefault();
@@ -9,7 +12,21 @@ const handleRegister = (event) =>{
   const email = form.email.value;
   const name = form.name.value;
   const password = form.password.value;
+
+  createUser(email, password)
+  .then(result =>{
+    const loggedUser = result.user;
+    console.log(loggedUser);
+    form.reset();
+  })
+  .catch(error =>{
+    console.log(error.message);
+  })
+
 }
+
+
+
 
     return (
         <div>
